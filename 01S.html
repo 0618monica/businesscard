@@ -8,75 +8,107 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Boldonse&display=swap" rel="stylesheet">
     <style>
-        .boldonse-regular {
-            font-family: "Boldonse", system-ui;
-            font-weight: 400;
-            font-style: normal;
+        .card-container {
+            perspective: 1000px;
+            width: 300px;
+            margin: auto;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 20px;
-        }
         .card {
-            background: white;
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 400px;
+            position: relative;
         }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        /* 滑鼠移到卡片上時翻轉 */
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-front {
+            z-index: 2;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
         }
+
         .name {
             font-size: 24px;
             font-weight: bold;
             margin-top: 10px;
         }
+
         .bio {
             font-size: 14px;
             color: #666;
             margin-top: 10px;
         }
-        .section {
-            text-align: left;
-            margin-top: 20px;
-        }
+
         .section-title {
             font-size: 18px;
             font-weight: bold;
+            margin-top: 15px;
         }
+
         .links a {
-            display: block;
             color: #10335c;
             text-decoration: none;
+            display: block;
             margin-top: 5px;
         }
+
     </style>
 </head>
 <body>
-<div class="card">
-    <img class="avatar" src="15272352-big79107628.jpg" height="200" width="200" alt="頭像">
-    <div class="name boldonse-regular">琪子</div>
-    <div class="bio">軟爛史萊姆</div>
-
-    <div class="section">
-        <div class="section-title boldonse-regular">☆⁠ABOUT ME</div>
-        <p>琪子/晨希/諾恩</p>
-        <p>中部 20⬆ 大學生</p>
-    </div>
-
-    <div class="section">
-        <div class="section-title">在這些地方能找到我</div>
-        <div class="links">
-            <a href="#">噗浪-阿琪💤好想睡覺</a>
+<div class="card-container">
+    <div class="card">
+        <div class="card-inner">
+            <div class="card-front">
+                <img class="avatar"
+                     src="https://media.discordapp.net/attachments/808710983597031484/1361689046925049958/1uRUSuzoHFd2Bu3uYHHloP.jpg?ex=67ffab3f&is=67fe59bf&hm=c259e06c697242621e523ccc32e86bb47c36169315e563adc9142be405645b91&=&format=webp"
+                     height="200" width="200"/>
+                <div class="name boldonse-regular">琪子</div>
+                <div class="bio">軟爛史萊姆</div>
+            </div>
+            <div class="card-back">
+                <div class="section-title">☆ ABOUT ME</div>
+                <p>琪子 / 晨希 / 諾恩</p>
+                <p>中部 20⬆ 大學生</p>
+                <div class="section-title">在這些地方能找到我</div>
+                <div class="links">
+                    <a href="#">噗浪 - 阿琪💤好想睡覺</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>
